@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Book {
 
-    private int id;
+    private Integer id;
     @NotBlank
     @Size(min = 1, max = 20)
     private String isbn;
@@ -20,18 +20,18 @@ public class Book {
     public Book() {
     }
 
-    public Book(int id, @NotBlank @Size(min = 1, max = 20) String isbn, @NotBlank @Size(min = 1, max = 20) String title, @NotBlank @Size(min = 1, max = 20) String author) {
+    public Book(Integer id, @NotBlank @Size(min = 1, max = 20) String isbn, @NotBlank @Size(min = 1, max = 20) String title, @NotBlank @Size(min = 1, max = 20) String author) {
         this.id = id;
         this.isbn = isbn;
         this.title = title;
         this.author = author;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -64,7 +64,7 @@ public class Book {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return id == book.id &&
+        return Objects.equals(id, book.id) &&
                 Objects.equals(isbn, book.isbn) &&
                 Objects.equals(title, book.title) &&
                 Objects.equals(author, book.author);
