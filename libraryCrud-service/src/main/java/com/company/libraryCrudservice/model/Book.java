@@ -13,16 +13,27 @@ import java.util.Objects;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Integer id;
     private String isbn;
     private String title;
     private String author;
 
-    public int getId() {
+    public Book(){
+
+    }
+
+    public Book(Integer id, String isbn, String title, String author) {
+        this.id = id;
+        this.isbn = isbn;
+        this.title = title;
+        this.author = author;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -55,7 +66,7 @@ public class Book {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return id == book.id &&
+        return Objects.equals(id, book.id) &&
                 Objects.equals(isbn, book.isbn) &&
                 Objects.equals(title, book.title) &&
                 Objects.equals(author, book.author);
